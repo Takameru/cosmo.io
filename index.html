@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CosmoGen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="1.ico" type="image/x-icon"> 
+</head>
+<body>
+    <header id="main_header">
+        <div id="header_background"></div>
+        <div class="header-content">
+            <h1>Открой новые созвездия</h1>
+            <p>Создавайте уникальные звёздные узоры и исследуйте космос с NASA API</p>
+            <div class="header-buttons">
+                <button id="create_constellation" class="header-button pulse">
+                    <i class="fas fa-star"></i> Создать созвездие
+                </button>
+                <button id="explore_space" class="header-button pulse">
+                    <i class="fas fa-rocket"></i> Космос сегодня
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="star_section">
+        <div id="sky"></div>
+        
+        <div class="section-header">
+            <h1><i class="fas fa-star"></i> Генератор Созвездий</h1>
+            <p class="subtitle">Создавайте созвездия на бескрайнем небе</p>
+        </div>
+        
+        <div id="control_panel" class="panel">
+            <h2 class="panel-title"><i class="fas fa-tools"></i> Управление</h2>
+            <div class="controls">
+                <div class="control-group">
+                    <label for="constellation_name"><i class="fas fa-signature"></i> Имя созвездия:</label>
+                    <input type="text" id="constellation_name" placeholder="Введите название">
+                </div>
+                
+                <div class="control-group">
+                    <button id="save_button"><i class="fas fa-save"></i> Сохранить</button>
+                    <button id="reset_button"><i class="fas fa-trash-alt"></i> Сбросить</button>
+                </div>
+                
+                <div class="control-group">
+                    <button id="help_button"><i class="fas fa-question-circle"></i> Помощь</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="legend_panel" class="panel">
+            <h2 class="panel-title"><i class="fas fa-scroll"></i> Легенда созвездия</h2>
+            <div id="legend">
+                Создайте звезды и соедините их, чтобы получить легенду...
+            </div>
+        </div>
+        
+        <div id="instructions_panel" class="panel" style="display:none">
+            <h2><i class="fas fa-book-open"></i> Инструкция</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3><span class="step-number">1</span> Создай</h3>
+                    <p>Кликайте по небу, чтобы создавать звезды</p>
+                </div>
+                <div class="step">
+                    <h3><span class="step-number">2</span> Соедини</h3>
+                    <p>Выделите первую звезду, затем вторую</p>
+                </div>
+                <div class="step">
+                    <h3><span class="step-number">3</span> Назови</h3>
+                    <p>Дайте имя вашему созвездию</p>
+                </div>
+                <div class="step">
+                    <h3><span class="step-number">4</span> Сохрани</h3>
+                    <p>Нажмите кнопку сохранения</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="panel_toggler"><i class="fas fa-eye"></i></div>
+    </section>
+    <section id="nasa_section">
+        <div class="nasa-bg"></div>
+        
+        <div class="section-header">
+            <h1><i class="fas fa-satellite"></i> Космос сегодня</h1>
+            <p class="subtitle">Астрономическое фото дня от NASA</p>
+        </div>
+        
+        <div class="nasa-container">
+            <div class="apod-container">
+                <div class="apod-loader" id="apod_loader">
+                    <div class="loader"></div>
+                    <p>Загружаем изображение дня...</p>
+                </div>
+                <img id="apod_image" class="apod-image" alt="Astronomy Picture of the Day" style="display: none;">
+                <div id="apod_details" class="apod-details" style="display: none;">
+                    <h2 class="apod-title" id="apod_title"></h2>
+                    <p class="apod-date" id="apod_date"></p>
+                    <p class="apod-explanation" id="apod_explanation"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="image-cosmo">
+        <div class="parallax-bg"></div>
+        <div class="cosmo-gallery">
+            <div class="gallery-item active">
+                <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659" alt="Галактика">
+                <div class="image-info">
+                    <h3>Туманность Ориона</h3>
+                    <p>Облако межзвёздного газа в созвездии Ориона</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1505506874110-6a7a69069a08" alt="Звездное небо">
+                <div class="image-info">
+                    <h3>Млечный Путь</h3>
+                    <p>Спиральная галактика, содержащая нашу Солнечную систему</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564" alt="Космос">
+                <div class="image-info">
+                    <h3>Галактика Андромеды</h3>
+                    <p>Ближайшая к Млечному Пути большая галактика</p>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-controls">
+            <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <audio id="space-ambience" loop>
+            <source src="space-ambience.mp3" type="audio/mpeg">
+        </audio>
+        <button class="audio-toggle">
+            <i class="fas fa-volume-mute"></i>
+        </button>
+    </section>
+
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="1.png" alt="">
+            </div>
+            <div class="footer-links">
+                <a href="#main_header">Главная</a>
+                <a href="#star_section">Создать созвездие</a>
+                <a href="#nasa_section">Космос сегодня</a>
+                <a href="#">О проекте</a>
+                <a href="#">Контакты</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">© 2025 Космический генератор созвездий. Все права защищены великим Савелием.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
